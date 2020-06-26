@@ -43,7 +43,7 @@ const autoWrap = (containerId, selector) => {
             const container = document.getElementById(containerId);
             const observer = new MutationObserver(wrapping);
 
-            observer.observe(container, {
+            container && observer.observe(container, {
                 attributes: true,
                 childList: true,
                 subtree: true,
