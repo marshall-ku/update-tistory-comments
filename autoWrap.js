@@ -145,16 +145,14 @@ const autoWrap = (containerId, selector) => {
         wrapping().then(() => {
             // 수정, 삭제, 이전 댓글 불러오기 등 변화 감지
             const container = document.getElementById(containerId);
-            const onMutate = () => {
-                wrapping();
-            };
-            const observer = new MutationObserver(onMutate);
+            const observer = new MutationObserver(wrapping);
 
-            observer.observe(container, {
-                attributes: true,
-                childList: true,
-                subtree: true,
-            });
+            container &&
+                observer.observe(container, {
+                    attributes: true,
+                    childList: true,
+                    subtree: true,
+                });
         })
     );
 };
